@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hyperwave",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Wavetable export planning, documentation, and frame-size tools for Hyperwave.",
   "homepage": "https://www.hyperwave.app/docs/developers",
   "author": { "name": "Hyperwave", "url": "https://www.hyperwave.app" },
