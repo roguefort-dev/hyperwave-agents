@@ -10,8 +10,9 @@ npx skills add roguefort-dev/hyperwave-agents
 
 - **hyperwave-documentation** finds published tutorials, import guides, and glossary definitions with source links.
 - **hyperwave-export-planning** selects a wavetable export layout and import workflow for a software synth or hardware module.
+- **hyperwave-api-automation** scripts public API calls with the CLI or clients, including pagination, bounded batches, and retry handling.
 
-Both skills are also served from the [domain's integrity-checked discovery index](https://www.hyperwave.app/.well-known/agent-skills/index.json). The root `plugin.json` and `mcp.json` package them with the real MCP services for clients supporting portable Agent Plugins.
+The skills are also served from the [domain's integrity-checked discovery index](https://www.hyperwave.app/.well-known/agent-skills/index.json). The root `plugin.json` and `mcp.json` package them with the real MCP services for clients supporting portable Agent Plugins.
 
 ## Connect an MCP client
 
