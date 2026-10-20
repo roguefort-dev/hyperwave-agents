@@ -1,0 +1,26 @@
+{
+  "name": "@hyperwave/public-api",
+  "version": "1.1.0",
+  "description": "Official anonymous Hyperwave public API client and CLI",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs"
+    }
+  },
+  "bin": {
+    "hyperwave": "./cli.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "index.d.ts",
+    "cli.mjs",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://www.hyperwave.app/docs/developers",
+  "author": "Kaj Loevesijn <roguefortdevelopment@gmail.com>"
+}
