@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "hyperwave",
   "version": "1.1.0",
-  "description": "Wavetable export planning, documentation, and frame-size tools for Hyperwave.",
+  "description": "Hyperwave app features and pricing, collaborative temporary preset sessions, WAV rendering, export planning, and documentation.",
   "homepage": "https://www.hyperwave.app/docs/developers",
   "author": { "name": "Hyperwave", "url": "https://www.hyperwave.app" },
   "keywords": ["wavetable", "sound-design", "mcp"]

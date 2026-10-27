@@ -26,8 +26,8 @@ const results = await client.batch([
 ]);
 ```
 
-Inputs and outputs are defined in [OpenAPI](https://www.hyperwave.app/openapi.json). Reuse `next_cursor` only with the same operation and filters. Requests time out after 30 seconds; `fetch`, `baseUrl`, and `timeoutMs` are injectable. HTTP failures throw `HyperwaveApiError` with `status`, `code`, `hint`, and `retryAfter`. The client does not retry automatically. Honor `Retry-After` on 429. All operations are read-only and naturally idempotent; batch results must be checked individually.
+Inputs and outputs are defined in [OpenAPI](https://www.hyperwave.app/openapi.json). Reuse `next_cursor` only with the same operation and filters. Requests time out after 30 seconds; `fetch`, `baseUrl`, and `timeoutMs` are injectable. HTTP failures throw `HyperwaveApiError` with `status`, `code`, `hint`, and `retryAfter`. The client does not retry automatically. Honor `Retry-After` on 429. Public utilities are read-only and idempotent; batch results must be checked individually. The same call method supports create_session, read_session, edit_session and other session tools. Session mutations require a private workspace token and revision; reread after conflicts or uncertain responses before retrying.
 
-The CLI accepts JSON as its second argument or on stdin. It writes results to stdout and structured failures to stderr with a nonzero exit code. `--base-url=` supports local verification. Browser rendering and cloud account operations are outside this API.
+The CLI accepts JSON as its second argument or on stdin. It writes results to stdout and structured failures to stderr with a nonzero exit code. `--base-url=` supports local verification. Temporary sessions support bounded server rendering and collaborative browser editing. Cloud account-library operations are outside this API.
 
 This package is downloadable directly from Hyperwave; publication in the npm registry is a separate step and is not claimed.

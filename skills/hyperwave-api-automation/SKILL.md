@@ -8,8 +8,32 @@ description: Script Hyperwave's anonymous public API with the CLI or JavaScript/
 Use this workflow when building a script or integration against Hyperwave's
 public HTTP tools. Read the current operation inputs and outputs in
 [OpenAPI](https://www.hyperwave.app/openapi.json); the canonical prefix is
-`/api/v1/agent`. All operations retrieve public information or calculate numbers.
-Call them over HTTPS without credentials or browser cookies.
+`/api/v1/agent`. Documentation and format utilities require no credentials or
+browser cookies. Temporary collaborative workspaces use the private token
+returned by `create_session`; they never use the user's account cookies.
+
+For collaborative sound design:
+
+1. Call `create_session` and give its `editorUrl` to the user. Keep the session
+   token private and out of logs. The workspace expires after 24 hours; normal
+   Save as preset keeps a permanent copy without closing collaboration.
+2. Use `describe_nodes` to discover types, defaults, numeric controls, and graph
+   sources. `read_session` supplies the actual graph ids and revision.
+3. Submit atomic `edit_session` changes with that `baseRevision`. Paths use
+   stable node ids; connections are addressed as `targetNodeId:targetInputKey`.
+   Create nodes from the supplied templates. Independent edits merge; on 409,
+   reread and reconcile the conflicting fields with the user's changes.
+4. Use `checkpoint_session` before experiments. Shared versions can be restored
+   through `restore_session` or the editor history. `wait_for_changes` waits up
+   to 20 seconds for user edits; use bounded waits while actively collaborating.
+5. `render_session` requires the exact revision and returns preview, WAV, and
+   preset links valid for five minutes. Rendering uses Hyperwave's actual WASM
+   engine. Respect render limits; open the editor for larger work.
+
+After an uncertain mutation response, reread the session before retrying. Do
+not blindly replay edits, overwrite user changes, or close a session until the
+user asks. Session project storage is separate from analytics; do not send chat
+transcripts or prompts as session metadata.
 
 Choose the user's preferred language or shell. Official JavaScript/TypeScript
 and Python clients and the Node CLI are available from the
@@ -37,6 +61,6 @@ and filters between pages; a cursor from another request shape is invalid.
 Preserve source URLs and distinguish an empty result from a failed request.
 
 Finish with a reproducible command or script, the actual successful results,
-and any unresolved per-operation errors. Keep audio processing, project editing,
-and cloud-account actions in their supported browser workflows; this API only
-exposes the public operations listed in OpenAPI.
+and any unresolved per-operation errors. Session tools edit only their temporary
+workspace. Access to account libraries and unrelated local projects stays in
+the normal browser workflows.
